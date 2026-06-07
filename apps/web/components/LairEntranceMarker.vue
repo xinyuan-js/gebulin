@@ -31,26 +31,31 @@ const statusLabel = computed(() => {
   }
 });
 
-function handleClick(event: MouseEvent) {
-  if (!isOpen.value) {
-    event.preventDefault();
-  }
-}
+const entranceClasses = computed(() => [
+  `lair-entrance--${props.entrance.tone}`,
+  `lair-entrance--id-${props.entrance.id}`,
+  edgeClasses.value,
+  { "lair-entrance--disabled": !isOpen.value }
+]);
+
+const entranceStyle = computed(() => ({
+  left: `${props.entrance.position.x}%`,
+  top: `${props.entrance.position.y}%`
+}));
+
+const entranceAriaLabel = computed(
+  () => `${props.entrance.name}，${statusLabel.value}。${props.entrance.description}`
+);
 </script>
 
 <template>
   <NuxtLink
+    v-if="isOpen"
     class="lair-entrance"
-    :class="[
-      `lair-entrance--${entrance.tone}`,
-      edgeClasses,
-      { 'lair-entrance--disabled': !isOpen }
-    ]"
-    :style="{ left: `${entrance.position.x}%`, top: `${entrance.position.y}%` }"
-    :to="isOpen ? entrance.route : '/'"
-    :aria-disabled="!isOpen"
-    :aria-label="`${entrance.name}，${statusLabel}。${entrance.description}`"
-    @click="handleClick"
+    :class="entranceClasses"
+    :style="entranceStyle"
+    :to="entrance.route"
+    :aria-label="entranceAriaLabel"
   >
     <span
       class="lair-entrance__prop"
@@ -67,4 +72,29 @@ function handleClick(event: MouseEvent) {
       {{ entrance.name }}：{{ entrance.description }}
     </span>
   </NuxtLink>
+
+  <span
+    v-else
+    class="lair-entrance"
+    :class="entranceClasses"
+    :style="entranceStyle"
+    role="link"
+    aria-disabled="true"
+    :aria-label="entranceAriaLabel"
+  >
+    <span
+      class="lair-entrance__prop"
+      :class="`lair-entrance__prop--${entrance.kind}`"
+      aria-hidden="true"
+    >
+      <span />
+    </span>
+    <span class="lair-entrance__panel">
+      <strong>{{ entrance.name }}</strong>
+      <small>{{ statusLabel }}</small>
+    </span>
+    <span class="lair-entrance__bubble" role="tooltip">
+      {{ entrance.name }}：{{ entrance.description }}
+    </span>
+  </span>
 </template>

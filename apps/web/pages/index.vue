@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { lairEntrances } from "~/data/lair-entrances";
+import { homeLairEntrances } from "~/data/lair-entrances";
 </script>
 
 <template>
@@ -20,8 +20,6 @@ import { lairEntrances } from "~/data/lair-entrances";
       <div class="lair-map__road lair-map__road--south-right" aria-hidden="true" />
       <div class="lair-map__road lair-map__road--east-drop" aria-hidden="true" />
       <div class="lair-map__road lair-map__road--west-drop" aria-hidden="true" />
-      <div class="lair-map__palisade" aria-hidden="true" />
-      <div class="lair-map__camp-gate" aria-hidden="true" />
       <div class="lair-map__plaza" aria-hidden="true" />
       <div class="lair-map__details" aria-hidden="true" />
 
@@ -32,7 +30,7 @@ import { lairEntrances } from "~/data/lair-entrances";
       </header>
 
       <LairEntranceMarker
-        v-for="entrance in lairEntrances"
+        v-for="entrance in homeLairEntrances"
         :key="entrance.id"
         :entrance="entrance"
       />
