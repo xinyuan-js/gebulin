@@ -1,0 +1,19 @@
+{
+  "name": "gebulin-lair",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "build:web": "npm --workspace apps/web run build",
+    "generate:web": "npm --workspace apps/web run generate",
+    "preview:web": "npm --workspace apps/web run preview",
+    "typecheck:web": "npm --workspace apps/web run typecheck"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  }
+}
+

@@ -1,0 +1,39 @@
+{
+  "name": "gebulin-lair",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/gebulin",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [3000, 8080, 8081, 18080],
+  "portsAttributes": {
+    "3000": {
+      "label": "Nuxt Web"
+    },
+    "8080": {
+      "label": "OAuth API"
+    },
+    "8081": {
+      "label": "Goblin API"
+    },
+    "18080": {
+      "label": "Nginx Gateway"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "golang.Go",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "go.toolsManagement.autoUpdate": false,
+        "typescript.tsdk": "apps/web/node_modules/typescript/lib"
+      }
+    }
+  },
+  "postCreateCommand": "corepack enable || true && npm install",
+  "remoteUser": "vscode"
+}
