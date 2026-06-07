@@ -65,6 +65,16 @@ export const caveFirstLayerEntrances: LairEntrance[] = [
     tone: "ember"
   },
   {
+    id: "goddess-statue",
+    name: "女神石像",
+    kind: "goddess-statue",
+    route: "/goddess",
+    status: "open",
+    description: "传说中伟大女神的石像，未来会按哥布林身份赐下不同神力。",
+    position: { x: 50, y: 29 },
+    tone: "violet"
+  },
+  {
     id: "warehouse",
     name: "仓库",
     kind: "warehouse",

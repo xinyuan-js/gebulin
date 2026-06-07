@@ -7,7 +7,8 @@ export type LairEntranceKind =
   | "tablet"
   | "guard"
   | "bedroll"
-  | "tent";
+  | "tent"
+  | "goddess-statue";
 
 export type GoblinRank =
   | "goblin_chief"

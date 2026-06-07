@@ -11,6 +11,7 @@ import { caveFirstLayerEntrances } from "~/data/lair-entrances";
       <div class="cave-map__wall cave-map__wall--right" aria-hidden="true" />
       <div class="cave-map__path cave-map__path--main-x" aria-hidden="true" />
       <div class="cave-map__path cave-map__path--main-y" aria-hidden="true" />
+      <div class="cave-map__path cave-map__path--shrine" aria-hidden="true" />
       <div class="cave-map__path cave-map__path--left-room" aria-hidden="true" />
       <div class="cave-map__path cave-map__path--right-room" aria-hidden="true" />
       <div class="cave-map__path cave-map__path--sleep-room" aria-hidden="true" />
