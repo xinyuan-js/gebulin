@@ -5,14 +5,25 @@ import { lairEntrances } from "~/data/lair-entrances";
 <template>
   <main class="home-shell">
     <section class="lair-scene" aria-labelledby="home-title">
-      <div class="lair-scene__sky" aria-hidden="true" />
-      <div class="lair-scene__moon" aria-hidden="true" />
-      <div class="lair-scene__trees lair-scene__trees--far" aria-hidden="true" />
-      <div class="lair-scene__trees lair-scene__trees--near" aria-hidden="true" />
-      <div class="lair-scene__clearing" aria-hidden="true" />
-      <div class="lair-scene__path" aria-hidden="true" />
-      <div class="lair-scene__fog lair-scene__fog--left" aria-hidden="true" />
-      <div class="lair-scene__fog lair-scene__fog--right" aria-hidden="true" />
+      <div class="lair-map__ground" aria-hidden="true" />
+      <div class="lair-map__forest lair-map__forest--top" aria-hidden="true" />
+      <div class="lair-map__forest lair-map__forest--bottom" aria-hidden="true" />
+      <div class="lair-map__forest lair-map__forest--left" aria-hidden="true" />
+      <div class="lair-map__forest lair-map__forest--right" aria-hidden="true" />
+      <div class="lair-map__pond" aria-hidden="true" />
+      <div class="lair-map__garden" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--main-x" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--main-y" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--north-left" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--north-right" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--south-left" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--south-right" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--east-drop" aria-hidden="true" />
+      <div class="lair-map__road lair-map__road--west-drop" aria-hidden="true" />
+      <div class="lair-map__palisade" aria-hidden="true" />
+      <div class="lair-map__camp-gate" aria-hidden="true" />
+      <div class="lair-map__plaza" aria-hidden="true" />
+      <div class="lair-map__details" aria-hidden="true" />
 
       <header class="home-title-card">
         <p class="home-title-card__eyebrow">Gebulin Lair</p>

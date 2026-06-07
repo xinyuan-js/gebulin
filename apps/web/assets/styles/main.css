@@ -43,7 +43,7 @@ a {
   background:
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    #030604;
+    #040806;
   background-size: 8px 8px;
 }
 
@@ -51,116 +51,279 @@ a {
   position: relative;
   min-height: calc(100vh - 32px);
   overflow: hidden;
-  border: 4px solid #101709;
-  outline: 2px solid #3e4f28;
-  background: #050807;
+  border: 4px solid #101407;
+  outline: 2px solid #52682f;
+  background: #0c1a0d;
   image-rendering: pixelated;
   isolation: isolate;
 }
 
-.lair-scene__sky,
-.lair-scene__moon,
-.lair-scene__trees,
-.lair-scene__clearing,
-.lair-scene__path,
-.lair-scene__fog {
+.lair-map__ground,
+.lair-map__forest,
+.lair-map__pond,
+.lair-map__garden,
+.lair-map__road,
+.lair-map__palisade,
+.lair-map__camp-gate,
+.lair-map__plaza,
+.lair-map__details {
   position: absolute;
   pointer-events: none;
 }
 
-.lair-scene__sky {
+.lair-map__ground {
   inset: 0;
+  z-index: 0;
   background:
+    radial-gradient(circle at 50% 55%, rgba(200, 163, 79, 0.16), transparent 18%),
+    radial-gradient(circle at 20% 78%, rgba(60, 92, 38, 0.35), transparent 20%),
+    radial-gradient(circle at 78% 28%, rgba(54, 80, 36, 0.34), transparent 21%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    radial-gradient(circle at 70% 18%, rgba(190, 202, 169, 0.24), transparent 10%),
-    radial-gradient(circle at 52% 44%, rgba(40, 83, 51, 0.2), transparent 35%),
-    linear-gradient(#060c18 0%, #07110f 48%, #050806 100%);
-  background-size: 16px 16px, 16px 16px, auto, auto, auto;
+    #1a3518;
+  background-size: auto, auto, auto, 16px 16px, 16px 16px, auto;
 }
 
-.lair-scene__moon {
-  right: 17%;
-  top: 8%;
-  width: 76px;
-  height: 76px;
-  background: #c8c6a6;
+.lair-map__forest {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 18px 18px, #24451d 0 9px, transparent 10px),
+    radial-gradient(circle at 42px 34px, #132d14 0 12px, transparent 13px),
+    radial-gradient(circle at 70px 16px, #2d5523 0 10px, transparent 11px),
+    radial-gradient(circle at 92px 42px, #102510 0 14px, transparent 15px);
+  background-size: 112px 72px;
+  filter: drop-shadow(0 5px 0 rgba(0, 0, 0, 0.28));
+}
+
+.lair-map__forest--top {
+  inset: 0 0 auto 0;
+  height: 19%;
+}
+
+.lair-map__forest--bottom {
+  inset: auto 0 0 0;
+  height: 17%;
+}
+
+.lair-map__forest--left {
+  inset: 12% auto 14% 0;
+  width: 13%;
+}
+
+.lair-map__forest--right {
+  inset: 14% 0 13% auto;
+  width: 12%;
+}
+
+.lair-map__pond {
+  right: 15%;
+  top: 14%;
+  z-index: 1;
+  width: 20%;
+  height: 20%;
+  border: 4px solid #213819;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+    #254d64;
+  background-size: 14px 14px;
   box-shadow:
-    -8px 8px 0 #edf0cf,
-    0 0 0 4px rgba(255, 255, 255, 0.08),
-    0 0 56px rgba(203, 216, 174, 0.24);
-  opacity: 0.92;
+    inset 0 0 0 5px #35718a,
+    6px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.lair-scene__moon::after {
-  position: absolute;
-  right: -8px;
-  top: 0;
+.lair-map__garden {
+  left: 15%;
+  bottom: 23%;
+  z-index: 1;
+  width: 22%;
+  height: 18%;
+  border: 3px solid #3d4a22;
+  background:
+    repeating-linear-gradient(90deg, rgba(97, 118, 46, 0.8) 0 8px, rgba(44, 81, 34, 0.7) 8px 16px),
+    #203c1f;
+  box-shadow:
+    inset 0 0 0 3px rgba(0, 0, 0, 0.22),
+    5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.lair-map__road {
+  z-index: 2;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.12) 3px, transparent 3px),
+    #c18c4a;
+  background-size: 18px 18px;
+  box-shadow:
+    inset 0 4px 0 rgba(255, 224, 130, 0.2),
+    inset 0 -4px 0 rgba(73, 42, 18, 0.22),
+    0 5px 0 rgba(0, 0, 0, 0.18);
+}
+
+.lair-map__road--main-x {
+  left: 18%;
+  top: 52%;
+  width: 65%;
+  height: 34px;
+}
+
+.lair-map__road--main-y {
+  left: calc(50% - 17px);
+  top: 18%;
   width: 34px;
-  height: 76px;
+  height: 64%;
+}
+
+.lair-map__road--north-left {
+  left: 30%;
+  top: 34%;
+  width: 22%;
+  height: 30px;
+}
+
+.lair-map__road--north-right {
+  left: 49%;
+  top: 31%;
+  width: 31%;
+  height: 30px;
+}
+
+.lair-map__road--south-left {
+  left: 28%;
+  top: 74%;
+  width: 24%;
+  height: 30px;
+}
+
+.lair-map__road--south-right {
+  left: 49%;
+  top: 75%;
+  width: 17%;
+  height: 30px;
+}
+
+.lair-map__road--east-drop {
+  left: 77%;
+  top: 52%;
+  width: 30px;
+  height: 20%;
+}
+
+.lair-map__road--west-drop {
+  left: 20%;
+  top: 52%;
+  width: 30px;
+  height: 22%;
+}
+
+.lair-map__palisade {
+  left: 33%;
+  top: 13%;
+  z-index: 3;
+  width: 34%;
+  height: 24px;
+  background:
+    linear-gradient(90deg, transparent 0 47%, #1a1009 47% 53%, transparent 53% 100%),
+    repeating-linear-gradient(90deg, #6e431f 0 10px, #8a5a2a 10px 17px, #21140b 17px 21px);
+  box-shadow:
+    inset 0 5px 0 rgba(255, 209, 112, 0.18),
+    0 7px 0 rgba(0, 0, 0, 0.32);
+}
+
+.lair-map__palisade::before,
+.lair-map__palisade::after {
+  position: absolute;
+  top: -7px;
+  width: 18px;
+  height: 38px;
   content: "";
-  background: #060c18;
+  background: #5a3519;
+  box-shadow:
+    inset 0 5px 0 rgba(255, 209, 112, 0.18),
+    0 5px 0 rgba(0, 0, 0, 0.3);
 }
 
-.lair-scene__trees {
-  left: -4%;
-  right: -4%;
-  bottom: 27%;
-  height: 47%;
-  background-repeat: repeat-x;
-  image-rendering: pixelated;
+.lair-map__palisade::before {
+  left: calc(50% - 55px);
 }
 
-.lair-scene__trees--far {
-  opacity: 0.72;
+.lair-map__palisade::after {
+  right: calc(50% - 55px);
+}
+
+.lair-map__camp-gate {
+  left: 50%;
+  top: 14%;
+  z-index: 4;
+  width: 118px;
+  height: 70px;
+  transform: translateX(-50%);
+  border-top: 12px solid #5a3519;
+  border-right: 10px solid #2d1a0e;
+  border-left: 10px solid #2d1a0e;
   background:
-    linear-gradient(#0000 0 72%, rgba(3, 5, 4, 0.5) 72% 100%),
-    linear-gradient(90deg, transparent 0 26px, #0b1710 26px 34px, transparent 34px 76px),
-    linear-gradient(135deg, transparent 0 22px, #132312 22px 46px, transparent 46px 100%),
-    linear-gradient(225deg, transparent 0 22px, #132312 22px 46px, transparent 46px 100%);
-  background-size: auto, 82px 100%, 82px 72px, 82px 72px;
-  background-position: 0 0, 0 100%, 0 28px, 0 28px;
+    linear-gradient(90deg, transparent 0 38px, rgba(0, 0, 0, 0.42) 38px 80px, transparent 80px 100%),
+    linear-gradient(#8a5a2a, #5a3519);
+  box-shadow:
+    inset 0 5px 0 rgba(255, 209, 112, 0.18),
+    7px 7px 0 rgba(0, 0, 0, 0.34);
 }
 
-.lair-scene__trees--near {
-  bottom: 20%;
-  height: 54%;
+.lair-map__camp-gate::before {
+  position: absolute;
+  left: 50%;
+  top: -28px;
+  width: 66px;
+  height: 20px;
+  content: "";
+  transform: translateX(-50%);
   background:
-    linear-gradient(#0000 0 66%, rgba(0, 0, 0, 0.52) 66% 100%),
-    linear-gradient(90deg, transparent 0 34px, #070907 34px 47px, transparent 47px 104px),
-    linear-gradient(135deg, transparent 0 30px, #0c160d 30px 62px, transparent 62px 100%),
-    linear-gradient(225deg, transparent 0 30px, #0c160d 30px 62px, transparent 62px 100%);
-  background-size: auto, 112px 100%, 112px 90px, 112px 90px;
-  background-position: 0 0, 12px 100%, 12px 18px, 12px 18px;
+    linear-gradient(90deg, transparent 0 8px, #b83f2b 8px 58px, transparent 58px 100%),
+    #27170c;
+  box-shadow:
+    0 5px 0 #27170c,
+    0 10px 0 rgba(0, 0, 0, 0.25);
 }
 
-.lair-scene__clearing {
-  left: -6%;
-  right: -6%;
-  bottom: -8%;
-  height: 48%;
+.lair-map__camp-gate::after {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 50px;
+  height: 44px;
+  content: "";
+  transform: translateX(-50%);
   background:
-    radial-gradient(ellipse at 50% 26%, rgba(113, 112, 60, 0.36), transparent 36%),
-    radial-gradient(ellipse at 16% 72%, rgba(0, 0, 0, 0.38), transparent 24%),
-    radial-gradient(ellipse at 84% 64%, rgba(0, 0, 0, 0.34), transparent 25%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(#141a0e, #080a06);
-  background-size: auto, auto, auto, 28px 100%, auto;
-  border-top: 6px solid #17210e;
+    linear-gradient(90deg, rgba(0, 0, 0, 0.36) 0 8px, transparent 8px 42px, rgba(0, 0, 0, 0.36) 42px 100%),
+    rgba(20, 12, 7, 0.58);
 }
 
-.lair-scene__path {
-  left: 36%;
-  bottom: -8%;
-  width: 30%;
-  height: 45%;
-  transform: perspective(140px) rotateX(18deg);
-  transform-origin: bottom center;
+.lair-map__plaza {
+  left: 50%;
+  top: 52%;
+  z-index: 3;
+  width: 132px;
+  height: 104px;
+  transform: translate(-50%, -50%);
+  border: 4px solid #6b4a24;
   background:
-    linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.18) 18% 21%, transparent 21% 79%, rgba(0, 0, 0, 0.18) 79% 82%, transparent 82%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 6px, transparent 6px 18px),
-    linear-gradient(#49351e, #1a110b);
-  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+    linear-gradient(90deg, transparent 0 46px, rgba(255, 217, 111, 0.18) 46px 54px, transparent 54px 100%),
+    linear-gradient(transparent 0 32px, rgba(255, 217, 111, 0.14) 32px 40px, transparent 40px 100%),
+    #98672f;
+  box-shadow:
+    inset 0 0 0 5px #c18c4a,
+    6px 6px 0 rgba(0, 0, 0, 0.28);
+}
+
+.lair-map__details {
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at 17% 48%, #2b351f 0 8px, transparent 9px),
+    radial-gradient(ellipse at 34% 28%, #5d4624 0 6px, transparent 7px),
+    radial-gradient(ellipse at 66% 43%, #2b351f 0 7px, transparent 8px),
+    radial-gradient(ellipse at 86% 80%, #52682f 0 9px, transparent 10px),
+    radial-gradient(ellipse at 40% 87%, #213819 0 8px, transparent 9px);
   opacity: 0.9;
 }
 
@@ -171,43 +334,25 @@ a {
   content: "";
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.38), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.38)),
-    linear-gradient(rgba(0, 0, 0, 0.22), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.52));
-}
-
-.lair-scene__fog {
-  width: 40%;
-  height: 18%;
-  bottom: 18%;
-  background:
-    linear-gradient(90deg, transparent, rgba(156, 168, 124, 0.09), transparent);
-  filter: blur(0.5px);
-}
-
-.lair-scene__fog--left {
-  left: 3%;
-}
-
-.lair-scene__fog--right {
-  right: 3%;
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28), transparent 17%, transparent 83%, rgba(0, 0, 0, 0.28)),
+    linear-gradient(rgba(3, 8, 6, 0.38), transparent 25%, transparent 76%, rgba(0, 0, 0, 0.34));
 }
 
 .home-title-card {
   position: absolute;
-  left: 50%;
-  top: 6%;
-  z-index: 2;
-  width: min(500px, calc(100% - 32px));
-  padding: 14px 18px 16px;
-  transform: translateX(-50%);
-  border: 3px solid rgba(72, 92, 45, 0.82);
+  left: 4%;
+  top: 4%;
+  z-index: 4;
+  width: min(350px, calc(100% - 32px));
+  padding: 12px 16px 14px;
+  border: 3px solid rgba(53, 72, 36, 0.86);
   background:
-    linear-gradient(135deg, rgba(17, 26, 15, 0.94), rgba(5, 8, 7, 0.8)),
+    linear-gradient(135deg, rgba(15, 22, 14, 0.92), rgba(5, 8, 7, 0.78)),
     repeating-linear-gradient(0deg, transparent 0 7px, rgba(255, 255, 255, 0.025) 7px 8px);
   box-shadow:
     0 0 0 3px rgba(0, 0, 0, 0.65),
     8px 8px 0 rgba(0, 0, 0, 0.42);
-  text-align: center;
+  text-align: left;
   text-shadow: 2px 2px #000;
 }
 
@@ -238,8 +383,8 @@ a {
     "Press Start 2P",
     "Courier New",
     monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -250,13 +395,13 @@ a {
     "Press Start 2P",
     "Microsoft YaHei",
     monospace;
-  font-size: clamp(1.55rem, 4.6vw, 3.15rem);
+  font-size: clamp(1.35rem, 3.6vw, 2.4rem);
   line-height: 1;
 }
 
 .home-title-card p:last-child,
 .module-page p:last-child {
-  margin: 12px auto 0;
+  margin: 10px auto 0;
   max-width: 36rem;
   color: var(--muted);
   line-height: 1.6;
@@ -264,12 +409,12 @@ a {
 
 .lair-entrance {
   position: absolute;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 132px;
-  padding: 6px;
+  z-index: 5;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-width: 112px;
+  padding: 8px 6px;
   transform: translate(-50%, -50%);
   color: var(--ink);
   text-decoration: none;
@@ -284,9 +429,13 @@ a {
 .lair-entrance__prop {
   position: relative;
   flex: 0 0 auto;
-  width: 52px;
-  height: 52px;
-  filter: drop-shadow(5px 6px 0 rgba(0, 0, 0, 0.42));
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(5px 7px 0 rgba(0, 0, 0, 0.48));
+}
+
+.lair-entrance__prop::before {
+  transition: transform 160ms steps(2, end);
 }
 
 .lair-entrance__prop span,
@@ -453,33 +602,46 @@ a {
   background: #2a251f;
 }
 
-.lair-entrance__prop--gate::before {
-  left: 8px;
-  top: 8px;
-  width: 38px;
-  height: 40px;
-  border: 5px solid #1a111b;
-  background:
-    linear-gradient(90deg, transparent 0 9px, rgba(255, 255, 255, 0.06) 9px 13px, transparent 13px 100%),
-    #32223b;
-  box-shadow: inset 0 0 0 4px #5a3e69;
-}
-
-.lair-entrance__prop--gate::after {
-  left: 22px;
-  top: 24px;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  box-shadow: 0 0 12px rgba(210, 166, 66, 0.75);
-}
-
-.lair-entrance__prop--gate span {
+.lair-entrance__prop--guard::before {
   left: 18px;
-  top: 4px;
-  width: 19px;
-  height: 8px;
-  background: #1a111b;
+  top: 22px;
+  width: 21px;
+  height: 24px;
+  background: #3f6128;
+  box-shadow:
+    inset 0 6px 0 #6f8f3d,
+    -7px 8px 0 -3px #263f1e,
+    7px 8px 0 -3px #263f1e,
+    0 20px 0 -5px #1b140e;
+}
+
+.lair-entrance__prop--guard::after {
+  left: 15px;
+  top: 8px;
+  width: 27px;
+  height: 20px;
+  background: #6f8f3d;
+  box-shadow:
+    -8px 8px 0 -4px #6f8f3d,
+    8px 8px 0 -4px #6f8f3d,
+    inset 0 6px 0 #25252a,
+    7px 9px 0 -5px #f0d57b,
+    -7px 9px 0 -5px #f0d57b,
+    0 16px 0 -6px #15100a;
+}
+
+.lair-entrance__prop--guard span {
+  left: 8px;
+  top: 5px;
+  width: 4px;
+  height: 46px;
+  background: #2b2418;
+  box-shadow:
+    0 -4px 0 #c4a15a,
+    26px 28px 0 -8px #32223b,
+    26px 32px 0 -8px #5a3e69,
+    13px 42px 0 -1px #1b140e,
+    26px 42px 0 -1px #1b140e;
 }
 
 .lair-entrance__prop--bedroll::before {
@@ -555,16 +717,18 @@ a {
 
 .lair-entrance__panel {
   display: grid;
+  justify-items: center;
   gap: 2px;
-  min-width: 78px;
-  padding: 6px 8px;
-  border: 3px solid #1b140e;
+  min-width: 86px;
+  padding: 5px 8px 6px;
+  border: 2px solid #1b140e;
   background:
-    linear-gradient(135deg, rgba(17, 22, 13, 0.95), rgba(7, 9, 7, 0.9)),
+    linear-gradient(135deg, rgba(22, 26, 16, 0.88), rgba(7, 9, 7, 0.82)),
     repeating-linear-gradient(90deg, transparent 0 5px, rgba(255, 255, 255, 0.025) 5px 6px);
   box-shadow:
     inset 0 0 0 2px rgba(255, 255, 255, 0.035),
-    4px 4px 0 #000;
+    3px 3px 0 rgba(0, 0, 0, 0.82);
+  text-align: center;
 }
 
 .lair-entrance__bubble {
@@ -646,6 +810,19 @@ a {
   left: auto;
 }
 
+.lair-entrance--edge-top .lair-entrance__bubble {
+  top: calc(100% + 12px);
+  bottom: auto;
+}
+
+.lair-entrance--edge-top .lair-entrance__bubble::before {
+  top: -14px;
+  bottom: auto;
+  border-top: 4px solid #191919;
+  border-bottom: 0;
+  box-shadow: 0 -2px 0 #efe9dd;
+}
+
 .lair-entrance:hover .lair-entrance__bubble,
 .lair-entrance:focus-visible .lair-entrance__bubble {
   animation: bubble-pop 180ms steps(2, end) forwards, bubble-float 900ms steps(2, end) 180ms infinite;
@@ -658,7 +835,7 @@ a {
     "Microsoft YaHei",
     "Courier New",
     monospace;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   white-space: nowrap;
 }
 
@@ -668,18 +845,19 @@ a {
     "Press Start 2P",
     "Courier New",
     monospace;
-  font-size: 0.72rem;
+  font-size: 0.58rem;
 }
 
 .lair-entrance:hover .lair-entrance__panel,
 .lair-entrance:focus-visible .lair-entrance__panel {
   border-color: var(--tone, var(--gold));
-  transform: translateY(-2px);
+  color: #fff4d2;
+  transform: translateY(-1px);
 }
 
 .lair-entrance:hover .lair-entrance__prop,
 .lair-entrance:focus-visible .lair-entrance__prop {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .lair-entrance:focus-visible {
@@ -689,7 +867,8 @@ a {
 
 .lair-entrance--disabled {
   cursor: url("/cursors/disabled.png") 2 2, not-allowed;
-  opacity: 0.68;
+  opacity: 0.62;
+  filter: saturate(0.72);
 }
 
 .lair-entrance--ember {
@@ -791,7 +970,7 @@ a {
   position: absolute;
   left: 50%;
   top: 80%;
-  z-index: 2;
+  z-index: 4;
   width: 30px;
   height: 38px;
   transform: translate(-50%, -50%);
@@ -866,7 +1045,10 @@ a {
   }
 
   .home-title-card {
-    top: 5%;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
   }
 
   .home-title-card h1 {
@@ -875,24 +1057,22 @@ a {
 
   .lair-entrance {
     min-width: 0;
-    gap: 5px;
+    gap: 3px;
     padding: 4px;
   }
 
   .lair-entrance__prop {
-    width: 42px;
-    height: 42px;
-    transform: scale(0.82);
-    transform-origin: center;
+    width: 48px;
+    height: 48px;
   }
 
   .lair-entrance__panel {
-    padding: 5px 6px;
-    min-width: 0;
+    min-width: 64px;
+    padding: 4px 5px;
   }
 
   .lair-entrance strong {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
   }
 
   .lair-entrance small {

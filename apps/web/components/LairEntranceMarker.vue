@@ -6,10 +6,14 @@ const props = defineProps<{
 }>();
 
 const isOpen = computed(() => props.entrance.status === "open");
-const edgeClass = computed(() => {
-  if (props.entrance.position.x <= 25) return "lair-entrance--edge-left";
-  if (props.entrance.position.x >= 75) return "lair-entrance--edge-right";
-  return "";
+const edgeClasses = computed(() => {
+  const classes: string[] = [];
+
+  if (props.entrance.position.x <= 25) classes.push("lair-entrance--edge-left");
+  if (props.entrance.position.x >= 75) classes.push("lair-entrance--edge-right");
+  if (props.entrance.position.y <= 26) classes.push("lair-entrance--edge-top");
+
+  return classes;
 });
 
 const statusLabel = computed(() => {
@@ -39,7 +43,7 @@ function handleClick(event: MouseEvent) {
     class="lair-entrance"
     :class="[
       `lair-entrance--${entrance.tone}`,
-      edgeClass,
+      edgeClasses,
       { 'lair-entrance--disabled': !isOpen }
     ]"
     :style="{ left: `${entrance.position.x}%`, top: `${entrance.position.y}%` }"

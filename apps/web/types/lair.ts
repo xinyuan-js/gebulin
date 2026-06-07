@@ -5,7 +5,7 @@ export type LairEntranceKind =
   | "cave"
   | "warehouse"
   | "tablet"
-  | "gate"
+  | "guard"
   | "bedroll"
   | "tent";
 
