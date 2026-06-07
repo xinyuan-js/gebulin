@@ -46,7 +46,7 @@ export const homeLairEntrances: LairEntrance[] = [
     name: "石碑",
     kind: "tablet",
     route: "/badges",
-    status: "locked",
+    status: "open",
     description: "刻着称号、成就和排名，但现在被泥封住了。",
     position: { x: 64, y: 77 },
     tone: "ash"
@@ -79,7 +79,7 @@ export const caveFirstLayerEntrances: LairEntrance[] = [
     name: "仓库",
     kind: "warehouse",
     route: "/inventory",
-    status: "coming_soon",
+    status: "open",
     description: "存放收藏、道具和以后可能派上用场的破烂。",
     position: { x: 25, y: 48 },
     tone: "stone"
@@ -99,7 +99,7 @@ export const caveFirstLayerEntrances: LairEntrance[] = [
     name: "哥布林帐篷",
     kind: "tent",
     route: "/admin",
-    status: "locked",
+    status: "open",
     description: "族长、长老和勇士商量坏主意的地方，普通羸弱哥布林只能在外面偷听。",
     position: { x: 74, y: 47 },
     tone: "hide",

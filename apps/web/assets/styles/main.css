@@ -1174,6 +1174,51 @@ a {
   border-color: var(--gold);
 }
 
+.module-grid,
+.module-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.module-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.module-card,
+.module-row {
+  border: 3px solid #241a10;
+  background:
+    linear-gradient(135deg, rgba(28, 31, 20, 0.92), rgba(9, 10, 8, 0.88)),
+    repeating-linear-gradient(0deg, transparent 0 7px, rgba(255, 255, 255, 0.025) 7px 8px);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.035),
+    5px 5px 0 rgba(0, 0, 0, 0.48);
+}
+
+.module-card {
+  min-height: 122px;
+  padding: 16px;
+}
+
+.module-row {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+}
+
+.module-card strong,
+.module-row strong {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.module-card span,
+.module-row span {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 @media (max-width: 720px) {
   .home-shell {
     padding: 8px;
